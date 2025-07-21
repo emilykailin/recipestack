@@ -17,6 +17,16 @@ const recipes = [
     name: 'Quick Sourdough',
     image: '/recipes/sourdough.jpg',
   },
+  {
+    id: '4',
+    name: 'Matcha Chip Cookies',
+    image: '/recipes/matcha-chip-cookie.jpeg',
+  },
+  {
+    id: '5',
+    name: 'Earl Gray Cookies',
+    image: '/recipes/earl-gray-cookie.jpg',
+  },
 ];
 
 export default function RecipesPage() {

@@ -1,0 +1,105 @@
+"use client";
+
+// app/recipes/5/page.tsx
+
+import Link from 'next/link';
+import Image from 'next/image';
+import '../../../app/globals.css';
+import { useEffect, useState } from 'react';
+
+export default function EarlGrayCookieRecipePage() {
+  const [cookingMode, setCookingMode] = useState(false);
+  let wakeLock: WakeLockSentinel | null = null;
+
+  useEffect(() => {
+    if (cookingMode && 'wakeLock' in navigator) {
+      (async () => {
+        try {
+          wakeLock = await (navigator as any).wakeLock.request('screen');
+        } catch (err) {
+          console.error(`Wake Lock error:`, err);
+        }
+      })();
+    }
+    return () => {
+      if (wakeLock) {
+        wakeLock.release().catch(console.error);
+        wakeLock = null;
+      }
+    };
+  }, [cookingMode]);
+
+  return (
+    <main className="min-h-screen bg-white text-black">
+      {/* Nav Bar */}
+      <nav className="flex items-center justify-between px-6 py-4 bg-[#FFF7D1]">
+        <Link href="/">
+          <div className="text-xl font-bold font-homemade cursor-pointer">
+            Recipe Stack
+          </div>
+        </Link>
+        <div className="flex items-center gap-4">
+          <Link href="/recipes">
+            <button className="px-4 py-2 bg-[#FFF0AB] text-black rounded-md hover:opacity-80">
+              Find Recipes
+            </button>
+          </Link>
+          <input
+            type="text"
+            placeholder="Search recipes..."
+            className="px-3 py-2 rounded-md border border-black bg-white placeholder-black"
+          />
+        </div>
+      </nav>
+
+      <section className="max-w-3xl mx-auto px-6 py-10">
+        <Image
+          src="/recipes/earl-gray-cookie.jpg"
+          alt="Earl Gray Cookie"
+          width={800}
+          height={500}
+          className="rounded-xl mb-8 w-full h-auto object-cover"
+        />
+
+        <h1 className="text-3xl font-bold mb-4 font-homemade text-center">Earl Gray Cookie Recipe</h1>
+        <p className="italic text-center mb-4">
+          Adapted from the Hummindbird High Lavender Earl Gray Cookie Recipe<br />
+          Makes two dozen medium-sized cookies
+        </p>
+
+        <div className="text-center mb-8">
+          <button
+            onClick={() => setCookingMode(!cookingMode)}
+            className="px-6 py-3 bg-[#FFF0AB] text-black text-lg font-semibold rounded-md hover:opacity-90"
+          >
+            {cookingMode ? 'Exit Cooking Mode' : 'Enter Cooking Mode'}
+          </button>
+        </div>
+
+        <h2 className="text-xl font-semibold mt-8 mb-2">Ingredients:</h2>
+        <ul className="list-disc list-inside mb-6">
+          <li>2¼ cups all-purpose flour</li>
+          <li>3 teabags of earl gray tea (cut them open and keep the ground tea leaves)</li>
+          <li>¼ tsp baking soda</li>
+	  <li>½ tsp baking powder</li>
+	  <li>½ tsp salt</li>
+          <li>1¼ cups white sugar</li>
+          <li>1 cup salted butter (room temp)</li>
+	  <li>1 egg (beaten)</li>
+	  <li>2 tsp vanilla extract</li>
+        </ul>
+
+        <h2 className="text-xl font-semibold mb-2">Steps:</h2>
+        <ol className="list-decimal list-inside space-y-2">
+          <li>Preheat your oven to 350℉ and grease 2 cookie sheets.</li>
+          <li>Mix the flour, ground earl gray tea leaves, baking powder, baking soda, and salt together in a bowl.</li>
+          <li>In another mixing bowl, cream together the butter and sugar until smooth.</li>
+          <li>To the butter and sugar mixture, add in the egg and vanilla extract. Then, mix in the dry ingredients</li>
+          <li>Shape your cookie dough into 2 tbsp balls and space them out on your cookie sheets.</li>
+          <li>Bake for 14 minutes. You should bake one sheet of cookies at a time for the best results.</li>
+          <li>When the cookies are fresh out of the oven, sprinkle them with some flaky salt and let them cool on a wire rack.</li>
+        </ol>
+      </section>
+    </main>
+  );
+}
