@@ -1,13 +1,13 @@
 "use client";
 
-// app/recipes/1/page.tsx
+// app/recipes/6/page.tsx
 
 import Link from 'next/link';
 import Image from 'next/image';
 import '../../../app/globals.css';
 import { useEffect, useState } from 'react';
 
-export default function CheesecakeRecipePage() {
+export default function EarlGrayCookieRecipePage() {
   const [cookingMode, setCookingMode] = useState(false);
   let wakeLock: WakeLockSentinel | null = null;
 
@@ -61,17 +61,16 @@ export default function CheesecakeRecipePage() {
 
       <section className="max-w-3xl mx-auto px-6 py-10">
         <Image
-          src="/recipes/cheesecake.jpg"
-          alt="Cheesecake"
+          src="/recipes/tofu-bagel.jpg"
+          alt="Tofu Bagels"
           width={800}
           height={500}
           className="rounded-xl mb-8 w-full h-auto object-cover"
         />
 
-        <h1 className="text-3xl font-bold mb-4 font-homemade text-center">Cheesecake Recipe</h1>
+        <h1 className="text-3xl font-bold mb-4 font-homemade text-center">Tofu Bagel Recipe</h1>
         <p className="italic text-center mb-4">
-          Adapted from the King Arthur Baking Easy Cheesecake Recipe<br />
-          Makes one 9 inch cheesecake
+          Makes 4 large bagels
         </p>
 
         <div className="text-center mb-8">
@@ -83,35 +82,29 @@ export default function CheesecakeRecipePage() {
           </button>
         </div>
 
-        <h2 className="text-xl font-semibold mt-8 mb-2">Base:</h2>
+        <h2 className="text-xl font-semibold mt-8 mb-2">Ingredients:</h2>
         <ul className="list-disc list-inside mb-6">
-          <li>8 whole graham crackers (crushed)</li>
-          <li>6 to 8 biscoff cookies (crushed)</li>
-          <li>¼ cup powdered sugar</li>
-          <li>6 tbsp butter (melted)</li>
-          <li>a pinch of salt</li>
-        </ul>
-
-        <h2 className="text-xl font-semibold mb-2">Filling:</h2>
-        <ul className="list-disc list-inside mb-6">
-          <li>12 oz cream cheese (room temp)</li>
-          <li>4 oz greek yogurt</li>
-          <li>⅔ cup white sugar</li>
-          <li>2 eggs (room temp)</li>
-          <li>1 tsp vanilla extract</li>
+          <li>2½ cups all-purpose flour</li>
+          <li>16 oz silken tofu</li>
+          <li>2 tsp yeast</li>
+	  <li>½ tsp salt</li>
+	  <li>2 tsp baking soda</li>
+          <li>1 tbsp honey</li>
+          <li>Toppings of your choosing</li>
         </ul>
 
         <h2 className="text-xl font-semibold mb-2">Steps:</h2>
         <ol className="list-decimal list-inside space-y-2">
-          <li>Preheat your oven to 350℉ and grease a 9 inch cake pan.</li>
-          <li>Mix all the base ingredients together and press into the bottom of the cake pan.</li>
-          <li>In a mixing bowl, cream together the cream cheese and sugar until smooth. Make sure the cream cheese is room temperature to avoid lumps.</li>
-          <li>Next, mix in the remaining filling ingredients, mixing gently to avoid adding too much air.</li>
-          <li>Pour the filling mixture on top of the base layer in the cake pan.</li>
-          <li>Place the cake pan onto a baking sheet and place in the preheated oven.</li>
-          <li>Bake for 20 minutes. The cheesecake should still be jiggly in the center when removed.</li>
-          <li>Refrigerate for at least 5 hours before serving. It should be fully set when ready.</li>
-          <li>Enjoy on its own or serve with a berry compote.</li>
+          <li>Preheat your oven to 400℉ and grease a sheet pan.</li>
+          <li>Heat the tofu in a bowl and add the yeast to it.</li>
+          <li>Add the flour and salt to the tofu yeast mixture.</li>
+          <li>Set a pot of water to boil and add the baking soda and honey to it.</li>
+          <li>While your water is coming to a boil, knead the dough till smooth, divide into 4, and shape.</li>
+          <li>Once your water has come to a boil, turn the heat down to keep the water on a simmer.</li>
+	  <li>Gently place the bagels into the simmering water for 30 seconds each before removing and placing on the sheet pan.</li>
+          <li>While letting your bagels rest on the sheet pan, sprinkle them with your preferred toppings (seseame seeds, everything but the bagel seasoning, poppy seeds, flaky salt, etc.).</li>
+	  <li>After resting for 3 minutes, bake the bagels for 20 minutes.</li>
+	  <li>Once out of the oven, let your bagels cool for 10 minutes before serving.</li>
         </ol>
       </section>
     </main>

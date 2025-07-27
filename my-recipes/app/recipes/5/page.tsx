@@ -44,11 +44,18 @@ export default function EarlGrayCookieRecipePage() {
               Find Recipes
             </button>
           </Link>
-          <input
-            type="text"
-            placeholder="Search recipes..."
-            className="px-3 py-2 rounded-md border border-black bg-white placeholder-black"
-          />
+          <form
+  	    action="/recipes"
+  	    method="GET"
+  	    className="flex items-center"
+	  >
+  	  <input
+    	    type="text"
+    	    name="search"
+    	    placeholder="Search recipes..."
+    	    className="px-3 py-2 rounded-md border border-black bg-white placeholder-black"
+  	  />
+	</form>
         </div>
       </nav>
 
@@ -94,7 +101,7 @@ export default function EarlGrayCookieRecipePage() {
           <li>Preheat your oven to 350℉ and grease 2 cookie sheets.</li>
           <li>Mix the flour, ground earl gray tea leaves, baking powder, baking soda, and salt together in a bowl.</li>
           <li>In another mixing bowl, cream together the butter and sugar until smooth.</li>
-          <li>To the butter and sugar mixture, add in the egg and vanilla extract. Then, mix in the dry ingredients</li>
+          <li>To the butter and sugar mixture, add in the egg and vanilla extract. Then, mix in the dry ingredients.</li>
           <li>Shape your cookie dough into 2 tbsp balls and space them out on your cookie sheets.</li>
           <li>Bake for 14 minutes. You should bake one sheet of cookies at a time for the best results.</li>
           <li>When the cookies are fresh out of the oven, sprinkle them with some flaky salt and let them cool on a wire rack.</li>

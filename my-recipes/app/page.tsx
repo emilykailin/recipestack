@@ -14,11 +14,18 @@ export default function Home() {
               Explore Recipes
             </button>
           </Link>
-          <input
-            type="text"
-            placeholder="Search recipes..."
-            className="px-3 py-2 rounded-md border border-black bg-white placeholder-black"
-          />
+          <form
+  	    action="/recipes"
+  	    method="GET"
+  	    className="flex items-center"
+	  >
+  	  <input
+    	    type="text"
+    	    name="search"
+    	    placeholder="Search recipes..."
+    	    className="px-3 py-2 rounded-md border border-black bg-white placeholder-black"
+  	  />
+	</form>
         </div>
       </nav>
 

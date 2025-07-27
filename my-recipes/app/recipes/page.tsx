@@ -1,5 +1,11 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
+import '../../app/globals.css';
+
 
 const recipes = [
   {
@@ -27,9 +33,21 @@ const recipes = [
     name: 'Earl Gray Cookies',
     image: '/recipes/earl-gray-cookie.jpg',
   },
+  {
+    id: '6',
+    name: 'Tofu Bagels',
+    image: '/recipes/tofu-bagel.jpg',
+  },
 ];
 
 export default function RecipesPage() {
+  const searchParams = useSearchParams();
+  const search = searchParams.get('search') || '';
+
+  const filteredRecipes = recipes.filter((recipe) =>
+    recipe.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <main className="min-h-screen bg-white text-black">
       {/* Nav Bar */}
@@ -40,11 +58,23 @@ export default function RecipesPage() {
           </div>
         </Link>
         <div className="flex items-center gap-4">
-          <input
-            type="text"
-            placeholder="Search recipes..."
-            className="px-3 py-2 rounded-md border border-black bg-white placeholder-black"
-          />
+          <Link href="/recipes">
+            <button className="px-4 py-2 bg-[#FFF0AB] text-black rounded-md hover:opacity-80">
+              Find Recipes
+            </button>
+          </Link>
+          <form
+  	    action="/recipes"
+   	    method="GET"
+  	    className="flex items-center"
+	  >
+  	  <input
+    	    type="text"
+    	    name="search"
+    	    placeholder="Search recipes..."
+    	    className="px-3 py-2 rounded-md border border-black bg-white placeholder-black"
+  	  />
+	</form>
         </div>
       </nav>
 
@@ -52,27 +82,32 @@ export default function RecipesPage() {
         <h1 className="text-3xl font-bold mb-8 text-center font-homemade">
           Explore Recipes
         </h1>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {recipes.map((recipe) => (
-            <Link key={recipe.id} href={`/recipes/${recipe.id}`} className="group">
-              <div className="overflow-hidden rounded-lg shadow-md">
-                <div className="relative w-full h-64">
-                  <Image
-                    src={recipe.image}
-                    alt={recipe.name}
-                    fill
-                    className="object-cover transition duration-300 group-hover:brightness-75"
-                  />
+         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {filteredRecipes.length > 0 ? (
+            filteredRecipes.map((recipe) => (
+              <Link key={recipe.id} href={`/recipes/${recipe.id}`} className="group">
+                <div className="overflow-hidden rounded-lg shadow-md">
+                  <div className="relative w-full h-64">
+                    <Image
+                      src={recipe.image}
+                      alt={recipe.name}
+                      fill
+                      className="object-cover transition duration-300 group-hover:brightness-75"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h2 className="text-lg font-semibold text-center group-hover:underline">
+                      {recipe.name}
+                    </h2>
+                  </div>
                 </div>
-                <div className="p-4">
-                  <h2 className="text-lg font-semibold text-center group-hover:underline">
-                    {recipe.name}
-                  </h2>
-                </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))
+          ) : (
+            <p className="text-center col-span-full text-gray-500">
+              No matching recipes found.
+            </p>
+          )}
         </div>
       </section>
     </main>
