@@ -3,39 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-
-const recipes = [
-  {
-    id: '1',
-    name: 'Cheesecake',
-    image: '/recipes/cheesecake.jpg',
-  },
-  {
-    id: '2',
-    name: 'Banana Bread',
-    image: '/recipes/banana-bread.jpg',
-  },
-  {
-    id: '3',
-    name: 'Quick Sourdough',
-    image: '/recipes/sourdough.jpg',
-  },
-  {
-    id: '4',
-    name: 'Matcha Chip Cookies',
-    image: '/recipes/matcha-chip-cookie.jpeg',
-  },
-  {
-    id: '5',
-    name: 'Earl Gray Cookies',
-    image: '/recipes/earl-gray-cookie.jpg',
-  },
-  {
-    id: '6',
-    name: 'Tofu Bagels',
-    image: '/recipes/tofu-bagel.jpg',
-  },
-];
+import { recipes } from '../data/recipes';
 
 export default function Recipesclient() {
   const searchParams = useSearchParams();

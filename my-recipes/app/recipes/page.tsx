@@ -18,6 +18,11 @@ export default function RecipesPage() {
               Find Recipes
             </button>
           </Link>
+          <Link href="/ingredient-matcher">
+            <button className="px-4 py-2 bg-[#FFF0AB] text-black rounded-md hover:opacity-80">
+              Recipe Matcher
+            </button>
+          </Link>
           <form
   	    action="/recipes"
    	    method="GET"
