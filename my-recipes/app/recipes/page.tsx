@@ -9,7 +9,7 @@ export default function RecipesPage() {
       <nav className="flex items-center justify-between px-6 py-4 bg-[#FFF7D1]">
         <Link href="/">
           <div className="text-xl font-bold font-homemade cursor-pointer">
-            Recipe Stack
+            One More Loaf
           </div>
         </Link>
         <div className="flex items-center gap-4">
@@ -20,7 +20,7 @@ export default function RecipesPage() {
           </Link>
           <Link href="/ingredient-matcher">
             <button className="px-4 py-2 bg-[#FFF0AB] text-black rounded-md hover:opacity-80">
-              Recipe Matcher
+              Ingredient Matcher
             </button>
           </Link>
           <form

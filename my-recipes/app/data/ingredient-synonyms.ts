@@ -1,7 +1,7 @@
 // Ingredient synonyms to improve matching accuracy
 export const ingredientSynonyms: Record<string, string[]> = {
   'flour': ['all-purpose flour', 'plain flour', 'wheat flour', 'bread flour'],
-  'sugar': ['white sugar', 'granulated sugar', 'table sugar'],
+  'brown sugar': ['sugar', 'light brown sugar', 'dark brown sugar'],
   'butter': ['unsalted butter', 'salted butter', 'margarine'],
   'eggs': ['egg', 'large eggs', 'medium eggs'],
   'vanilla extract': ['vanilla', 'vanilla essence'],

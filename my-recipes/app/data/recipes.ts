@@ -43,7 +43,7 @@ export const recipes: Recipe[] = [
     ingredients: [
       'bananas',
       'flour',
-      'sugar',
+      'brown sugar',
       'eggs',
       'butter',
       'baking soda',
@@ -53,17 +53,16 @@ export const recipes: Recipe[] = [
   },
   {
     id: '3',
-    name: 'Quick Sourdough',
+    name: 'Sourdough',
     image: '/recipes/sourdough.jpg',
     difficulty: 'hard',
-    prepTime: '30 minutes',
+    prepTime: '2 days',
     cookTime: '45 minutes',
     ingredients: [
       'flour',
       'water',
       'salt',
-      'sourdough starter',
-      'olive oil'
+      'sourdough starter'
     ]
   },
   {
@@ -77,7 +76,7 @@ export const recipes: Recipe[] = [
       'flour',
       'matcha powder',
       'butter',
-      'sugar',
+      'brown sugar',
       'eggs',
       'vanilla extract',
       'chocolate chips',
@@ -95,7 +94,7 @@ export const recipes: Recipe[] = [
     ingredients: [
       'flour',
       'butter',
-      'sugar',
+      'brown sugar',
       'eggs',
       'earl gray tea',
       'vanilla extract',
@@ -162,6 +161,11 @@ export function findMatchingRecipes(userIngredients: string[]): {
 }
 
 
+
+export function getAllUniqueIngredients(): string[] {
+  const allIngredients = recipes.flatMap(recipe => recipe.ingredients);
+  return [...new Set(allIngredients)].sort();
+}
 
 export function getIngredientSuggestions(userInput: string): string[] {
   const allIngredients = recipes.flatMap(recipe => recipe.ingredients);

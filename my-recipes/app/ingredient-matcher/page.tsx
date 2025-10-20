@@ -3,40 +3,26 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { findMatchingRecipes, getIngredientSuggestions, type Recipe } from '../data/recipes';
+import { findMatchingRecipes, getAllUniqueIngredients, type Recipe } from '../data/recipes';
 
 export default function IngredientMatcherPage() {
   const [userIngredients, setUserIngredients] = useState<string[]>([]);
-  const [currentInput, setCurrentInput] = useState('');
-  const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
   const [results, setResults] = useState<{
     canMake: Recipe[];
     partialMatch: Recipe[];
     missingIngredients: { recipe: Recipe; missing: string[] }[];
   } | null>(null);
 
-  useEffect(() => {
-    if (currentInput.trim()) {
-      const newSuggestions = getIngredientSuggestions(currentInput);
-      setSuggestions(newSuggestions);
-      setShowSuggestions(true);
-    } else {
-      setShowSuggestions(false);
-    }
-  }, [currentInput]);
+  const allIngredients = getAllUniqueIngredients();
 
-  const handleAddIngredient = (ingredient: string) => {
-    const trimmedIngredient = ingredient.trim();
-    if (trimmedIngredient && !userIngredients.includes(trimmedIngredient)) {
-      setUserIngredients([...userIngredients, trimmedIngredient]);
-      setCurrentInput('');
-      setShowSuggestions(false);
-    }
-  };
-
-  const handleRemoveIngredient = (ingredientToRemove: string) => {
-    setUserIngredients(userIngredients.filter(ingredient => ingredient !== ingredientToRemove));
+  const handleIngredientToggle = (ingredient: string) => {
+    setUserIngredients(prev => {
+      if (prev.includes(ingredient)) {
+        return prev.filter(ing => ing !== ingredient);
+      } else {
+        return [...prev, ingredient];
+      }
+    });
   };
 
   const handleFindRecipes = () => {
@@ -46,19 +32,13 @@ export default function IngredientMatcherPage() {
     }
   };
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && currentInput.trim()) {
-      handleAddIngredient(currentInput);
-    }
-  };
-
   return (
     <main className="min-h-screen bg-white text-black">
       {/* Nav Bar */}
       <nav className="flex items-center justify-between px-6 py-4 bg-[#FFF7D1]">
         <Link href="/">
           <div className="text-xl font-bold font-homemade cursor-pointer">
-            Recipe Stack
+            One More Loaf
           </div>
         </Link>
         <div className="flex items-center gap-4">
@@ -69,7 +49,7 @@ export default function IngredientMatcherPage() {
           </Link>
           <Link href="/ingredient-matcher">
             <button className="px-4 py-2 bg-[#FFF0AB] text-black rounded-md hover:opacity-80">
-              Recipe Matcher
+              Ingredient Matcher
             </button>
           </Link>
         </div>
@@ -77,60 +57,58 @@ export default function IngredientMatcherPage() {
 
       <section className="max-w-4xl mx-auto px-6 py-10">
         <h1 className="text-3xl font-bold mb-8 text-center font-homemade">
-          Recipe Matcher
+          Ingredient Matcher
         </h1>
         <p className="text-center mb-8 text-gray-600">
-          Enter the ingredients you have, and we'll find recipes you can make!
+          Select the ingredients you have, and we'll find recipes you can make!
         </p>
 
-        {/* Ingredient Input Section */}
+        {/* Ingredient Selection Section */}
         <div className="bg-gray-50 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4">Your Ingredients</h2>
+          <h2 className="text-xl font-semibold mb-4">Select Your Ingredients</h2>
           
-          {/* Input with suggestions */}
-          <div className="relative mb-4">
-            <input
-              type="text"
-              value={currentInput}
-              onChange={(e) => setCurrentInput(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Type an ingredient (e.g., flour, eggs, butter)..."
-              className="w-full px-4 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FFF0AB]"
-            />
-            
-            {/* Suggestions dropdown */}
-            {showSuggestions && suggestions.length > 0 && (
-              <div className="absolute z-10 w-full bg-white border border-gray-300 rounded-md shadow-lg mt-1">
-                {suggestions.map((suggestion, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleAddIngredient(suggestion)}
-                    className="w-full text-left px-4 py-2 hover:bg-gray-100 focus:bg-gray-100"
-                  >
-                    {suggestion}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Current ingredients */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {userIngredients.map((ingredient, index) => (
-              <span
-                key={index}
-                className="bg-[#FFF0AB] px-3 py-1 rounded-full text-sm flex items-center gap-2"
+          {/* Checkbox grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
+            {allIngredients.map((ingredient) => (
+              <label
+                key={ingredient}
+                className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 cursor-pointer"
               >
-                {ingredient}
-                <button
-                  onClick={() => handleRemoveIngredient(ingredient)}
-                  className="text-gray-600 hover:text-red-500"
-                >
-                  ×
-                </button>
-              </span>
+                <input
+                  type="checkbox"
+                  checked={userIngredients.includes(ingredient)}
+                  onChange={() => handleIngredientToggle(ingredient)}
+                  className="w-4 h-4 text-[#FFF0AB] bg-gray-100 border-gray-300 rounded focus:ring-[#FFF0AB] focus:ring-2"
+                />
+                <span className="text-sm text-gray-700 capitalize">{ingredient}</span>
+              </label>
             ))}
           </div>
+
+          {/* Selected ingredients summary */}
+          {userIngredients.length > 0 && (
+            <div className="mb-4">
+              <p className="text-sm text-gray-600 mb-2">
+                Selected {userIngredients.length} ingredient{userIngredients.length !== 1 ? 's' : ''}:
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {userIngredients.map((ingredient, index) => (
+                  <span
+                    key={index}
+                    className="bg-[#FFF0AB] px-3 py-1 rounded-full text-sm flex items-center gap-2"
+                  >
+                    {ingredient}
+                    <button
+                      onClick={() => handleIngredientToggle(ingredient)}
+                      className="text-gray-600 hover:text-red-500"
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
           <button
             onClick={handleFindRecipes}
@@ -148,7 +126,7 @@ export default function IngredientMatcherPage() {
             {results.canMake.length > 0 && (
               <div>
                 <h2 className="text-2xl font-bold mb-4 text-green-600">
-                  🎉 You can make these recipes!
+                  You can make these recipes!
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {results.canMake.map((recipe) => (
@@ -181,7 +159,7 @@ export default function IngredientMatcherPage() {
             {results.partialMatch.length > 0 && (
               <div>
                 <h2 className="text-2xl font-bold mb-4 text-yellow-600">
-                  🔍 Almost there! You're missing a few ingredients:
+                  Almost there! You're missing a few ingredients:
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {results.partialMatch.map((recipe) => {
@@ -189,37 +167,39 @@ export default function IngredientMatcherPage() {
                       item => item.recipe.id === recipe.id
                     );
                     return (
-                      <div key={recipe.id} className="overflow-hidden rounded-lg shadow-md">
-                        <div className="relative w-full h-48">
-                          <Image
-                            src={recipe.image}
-                            alt={recipe.name}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <div className="p-4">
-                          <h3 className="text-lg font-semibold text-center mb-2">
-                            {recipe.name}
-                          </h3>
-                          <p className="text-sm text-gray-600 text-center mb-2">
-                            {recipe.difficulty} • {recipe.prepTime}
-                          </p>
-                          <div className="text-sm">
-                            <p className="font-semibold text-yellow-600 mb-1">Missing:</p>
-                            <div className="flex flex-wrap gap-1">
-                              {missingInfo?.missing.map((ingredient, index) => (
-                                <span
-                                  key={index}
-                                  className="bg-red-100 text-red-700 px-2 py-1 rounded text-xs"
-                                >
-                                  {ingredient}
-                                </span>
-                              ))}
+                      <Link key={recipe.id} href={`/recipes/${recipe.id}`} className="group">
+                        <div className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                          <div className="relative w-full h-48">
+                            <Image
+                              src={recipe.image}
+                              alt={recipe.name}
+                              fill
+                              className="object-cover transition duration-300 group-hover:brightness-75"
+                            />
+                          </div>
+                          <div className="p-4">
+                            <h3 className="text-lg font-semibold text-center mb-2 group-hover:underline">
+                              {recipe.name}
+                            </h3>
+                            <p className="text-sm text-gray-600 text-center mb-2">
+                              {recipe.difficulty} • {recipe.prepTime}
+                            </p>
+                            <div className="text-sm">
+                              <p className="font-semibold text-yellow-600 mb-1">Missing:</p>
+                              <div className="flex flex-wrap gap-1">
+                                {missingInfo?.missing.map((ingredient, index) => (
+                                  <span
+                                    key={index}
+                                    className="bg-red-100 text-red-700 px-2 py-1 rounded text-xs"
+                                  >
+                                    {ingredient}
+                                  </span>
+                                ))}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     );
                   })}
                 </div>
