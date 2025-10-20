@@ -35,21 +35,16 @@ export default function IngredientMatcherPage() {
   return (
     <main className="min-h-screen bg-white text-black">
       {/* Nav Bar */}
-      <nav className="flex items-center justify-between px-6 py-4 bg-[#FFF7D1]">
+      <nav className="flex flex-col sm:flex-row items-center justify-between px-4 sm:px-6 py-4 bg-[#FFF7D1] gap-4">
         <Link href="/">
           <div className="text-xl font-bold font-homemade cursor-pointer">
             One More Loaf
           </div>
         </Link>
-        <div className="flex items-center gap-4">
-          <Link href="/recipes">
-            <button className="px-4 py-2 bg-[#FFF0AB] text-black rounded-md hover:opacity-80">
+        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 w-full sm:w-auto">
+          <Link href="/recipes" className="w-full sm:w-auto">
+            <button className="w-full sm:w-auto px-4 py-2 bg-[#FFF0AB] text-black rounded-md hover:opacity-80 text-sm sm:text-base">
               Find Recipes
-            </button>
-          </Link>
-          <Link href="/ingredient-matcher">
-            <button className="px-4 py-2 bg-[#FFF0AB] text-black rounded-md hover:opacity-80">
-              Ingredient Matcher
             </button>
           </Link>
         </div>
