@@ -55,32 +55,32 @@ export default function IngredientMatcherPage() {
         </div>
       </nav>
 
-      <section className="max-w-4xl mx-auto px-6 py-10">
-        <h1 className="text-3xl font-bold mb-8 text-center font-homemade">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-center font-homemade">
           Ingredient Matcher
         </h1>
-        <p className="text-center mb-8 text-gray-600">
+        <p className="text-center mb-6 sm:mb-8 text-gray-600 text-sm sm:text-base px-2">
           Select the ingredients you have, and we'll find recipes you can make!
         </p>
 
         {/* Ingredient Selection Section */}
-        <div className="bg-gray-50 rounded-lg p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4">Select Your Ingredients</h2>
+        <div className="bg-gray-50 rounded-lg p-4 sm:p-6 mb-6 sm:mb-8">
+          <h2 className="text-lg sm:text-xl font-semibold mb-4">Select Your Ingredients</h2>
           
           {/* Checkbox grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 mb-4 sm:mb-6">
             {allIngredients.map((ingredient) => (
               <label
                 key={ingredient}
-                className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 cursor-pointer"
+                className="flex items-center space-x-2 p-2 sm:p-3 rounded-md hover:bg-gray-100 cursor-pointer text-sm sm:text-base"
               >
                 <input
                   type="checkbox"
                   checked={userIngredients.includes(ingredient)}
                   onChange={() => handleIngredientToggle(ingredient)}
-                  className="w-4 h-4 text-[#FFF0AB] bg-gray-100 border-gray-300 rounded focus:ring-[#FFF0AB] focus:ring-2"
+                  className="w-4 h-4 text-[#FFF0AB] bg-gray-100 border-gray-300 rounded focus:ring-[#FFF0AB] focus:ring-2 flex-shrink-0"
                 />
-                <span className="text-sm text-gray-700 capitalize">{ingredient}</span>
+                <span className="text-sm sm:text-base text-gray-700 capitalize">{ingredient}</span>
               </label>
             ))}
           </div>
@@ -95,12 +95,12 @@ export default function IngredientMatcherPage() {
                 {userIngredients.map((ingredient, index) => (
                   <span
                     key={index}
-                    className="bg-[#FFF0AB] px-3 py-1 rounded-full text-sm flex items-center gap-2"
+                    className="bg-[#FFF0AB] px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm flex items-center gap-1 sm:gap-2"
                   >
-                    {ingredient}
+                    <span className="truncate max-w-20 sm:max-w-none">{ingredient}</span>
                     <button
                       onClick={() => handleIngredientToggle(ingredient)}
-                      className="text-gray-600 hover:text-red-500"
+                      className="text-gray-600 hover:text-red-500 flex-shrink-0"
                     >
                       ×
                     </button>
@@ -113,7 +113,7 @@ export default function IngredientMatcherPage() {
           <button
             onClick={handleFindRecipes}
             disabled={userIngredients.length === 0}
-            className="px-6 py-3 bg-[#FFF0AB] text-black text-lg font-semibold rounded-md hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full sm:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-[#FFF0AB] text-black text-base sm:text-lg font-semibold rounded-md hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Find Matching Recipes
           </button>
@@ -132,12 +132,13 @@ export default function IngredientMatcherPage() {
                   {results.canMake.map((recipe) => (
                     <Link key={recipe.id} href={`/recipes/${recipe.id}`} className="group">
                       <div className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                        <div className="relative w-full h-48">
+                        <div className="relative w-full">
                           <Image
                             src={recipe.image}
                             alt={recipe.name}
-                            fill
-                            className="object-cover transition duration-300 group-hover:brightness-75"
+                            width={400}
+                            height={300}
+                            className="w-full h-auto object-cover transition duration-300 group-hover:brightness-75"
                           />
                         </div>
                         <div className="p-4">
@@ -169,12 +170,13 @@ export default function IngredientMatcherPage() {
                     return (
                       <Link key={recipe.id} href={`/recipes/${recipe.id}`} className="group">
                         <div className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                          <div className="relative w-full h-48">
+                          <div className="relative w-full">
                             <Image
                               src={recipe.image}
                               alt={recipe.name}
-                              fill
-                              className="object-cover transition duration-300 group-hover:brightness-75"
+                              width={400}
+                              height={300}
+                              className="w-full h-auto object-cover transition duration-300 group-hover:brightness-75"
                             />
                           </div>
                           <div className="p-4">

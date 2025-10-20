@@ -14,21 +14,22 @@ export default function Recipesclient() {
   );
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {filteredRecipes.length > 0 ? (
             filteredRecipes.map((recipe) => (
               <Link key={recipe.id} href={`/recipes/${recipe.id}`} className="group">
-                <div className="overflow-hidden rounded-lg shadow-md">
-                  <div className="relative w-full h-64">
+                <div className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                  <div className="relative w-full">
                     <Image
                       src={recipe.image}
                       alt={recipe.name}
-                      fill
-                      className="object-cover transition duration-300 group-hover:brightness-75"
+                      width={400}
+                      height={300}
+                      className="w-full h-auto object-cover transition duration-300 group-hover:brightness-75"
                     />
                   </div>
-                  <div className="p-4">
-                    <h2 className="text-lg font-semibold text-center group-hover:underline">
+                  <div className="p-3 sm:p-4">
+                    <h2 className="text-base sm:text-lg font-semibold text-center group-hover:underline">
                       {recipe.name}
                     </h2>
                   </div>
@@ -36,7 +37,7 @@ export default function Recipesclient() {
               </Link>
             ))
           ) : (
-            <p className="text-center col-span-full text-gray-500">
+            <p className="text-center col-span-full text-gray-500 text-sm sm:text-base">
               No matching recipes found.
             </p>
           )}

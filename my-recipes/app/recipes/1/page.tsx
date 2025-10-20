@@ -32,34 +32,34 @@ export default function CheesecakeRecipePage() {
   return (
     <main className="min-h-screen bg-white text-black">
       {/* Nav Bar */}
-      <nav className="flex items-center justify-between px-6 py-4 bg-[#FFF7D1]">
+      <nav className="flex flex-col sm:flex-row items-center justify-between px-4 sm:px-6 py-4 bg-[#FFF7D1] gap-4">
         <Link href="/">
           <div className="text-xl font-bold font-homemade cursor-pointer">
             One More Loaf
           </div>
         </Link>
-        <div className="flex items-center gap-4">
-          <Link href="/recipes">
-            <button className="px-4 py-2 bg-[#FFF0AB] text-black rounded-md hover:opacity-80">
+        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 w-full sm:w-auto">
+          <Link href="/recipes" className="w-full sm:w-auto">
+            <button className="w-full sm:w-auto px-4 py-2 bg-[#FFF0AB] text-black rounded-md hover:opacity-80 text-sm sm:text-base">
               Find Recipes
             </button>
           </Link>
           <form
   	    action="/recipes"
   	    method="GET"
-  	    className="flex items-center"
+  	    className="flex items-center w-full sm:w-auto"
 	  >
   	  <input
     	    type="text"
     	    name="search"
     	    placeholder="Search recipes..."
-    	    className="px-3 py-2 rounded-md border border-black bg-white placeholder-black"
+    	    className="w-full sm:w-auto px-3 py-2 rounded-md border border-black bg-white placeholder-black text-sm"
   	  />
 	</form>
         </div>
       </nav>
 
-      <section className="max-w-3xl mx-auto px-6 py-10">
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
         <Image
           src="/recipes/cheesecake.jpg"
           alt="Cheesecake"
@@ -68,23 +68,23 @@ export default function CheesecakeRecipePage() {
           className="rounded-xl mb-8 w-full h-auto object-cover"
         />
 
-        <h1 className="text-3xl font-bold mb-4 font-homemade text-center">Cheesecake Recipe</h1>
-        <p className="italic text-center mb-4">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-4 font-homemade text-center">Cheesecake Recipe</h1>
+        <p className="italic text-center mb-4 text-sm sm:text-base">
           Adapted from the King Arthur Baking Easy Cheesecake Recipe<br />
           Makes one 9 inch cheesecake
         </p>
 
-        <div className="text-center mb-8">
+        <div className="text-center mb-6 sm:mb-8">
           <button
             onClick={() => setCookingMode(!cookingMode)}
-            className="px-6 py-3 bg-[#FFF0AB] text-black text-lg font-semibold rounded-md hover:opacity-90"
+            className="px-4 sm:px-6 py-2 sm:py-3 bg-[#FFF0AB] text-black text-base sm:text-lg font-semibold rounded-md hover:opacity-90 w-full sm:w-auto"
           >
             {cookingMode ? 'Exit Cooking Mode' : 'Enter Cooking Mode'}
           </button>
         </div>
 
-        <h2 className="text-xl font-semibold mt-8 mb-2">Base:</h2>
-        <ul className="list-disc list-inside mb-6">
+        <h2 className="text-lg sm:text-xl font-semibold mt-6 sm:mt-8 mb-2">Base:</h2>
+        <ul className="list-disc list-inside mb-4 sm:mb-6 text-sm sm:text-base space-y-1">
           <li>8 whole graham crackers (crushed)</li>
           <li>6 to 8 biscoff cookies (crushed)</li>
           <li>¼ cup powdered sugar</li>
@@ -92,8 +92,8 @@ export default function CheesecakeRecipePage() {
           <li>a pinch of salt</li>
         </ul>
 
-        <h2 className="text-xl font-semibold mb-2">Filling:</h2>
-        <ul className="list-disc list-inside mb-6">
+        <h2 className="text-lg sm:text-xl font-semibold mb-2">Filling:</h2>
+        <ul className="list-disc list-inside mb-4 sm:mb-6 text-sm sm:text-base space-y-1">
           <li>12 oz cream cheese (room temp)</li>
           <li>4 oz greek yogurt</li>
           <li>⅔ cup white sugar</li>
@@ -101,8 +101,8 @@ export default function CheesecakeRecipePage() {
           <li>1 tsp vanilla extract</li>
         </ul>
 
-        <h2 className="text-xl font-semibold mb-2">Steps:</h2>
-        <ol className="list-decimal list-inside space-y-2">
+        <h2 className="text-lg sm:text-xl font-semibold mb-2">Steps:</h2>
+        <ol className="list-decimal list-inside space-y-2 text-sm sm:text-base">
           <li>Preheat your oven to 350℉ and grease a 9 inch cake pan.</li>
           <li>Mix all the base ingredients together and press into the bottom of the cake pan.</li>
           <li>In a mixing bowl, cream together the cream cheese and sugar until smooth. Make sure the cream cheese is room temperature to avoid lumps.</li>
