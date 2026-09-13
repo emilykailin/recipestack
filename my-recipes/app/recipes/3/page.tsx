@@ -92,21 +92,31 @@ export default function SourdoughRecipePage() {
         </ul>
 
         <h2 className="text-xl font-semibold mb-2">Steps:</h2>
+        <h4 className="text-l font-semibold mb-2">Day 1</h4>
         <ol className="list-decimal list-inside space-y-2">
           <li>24 hours before you start mixing ingredients together, feed your sourdough starter.</li>
+          <br></br>
+        </ol>
+        <h4 className="text-l font-semibold mb-2">Day 2</h4>
+        <ol className="list-decimal list-inside space-y-2">
           <li>The next day, mix all the ingredients together and set aside for 30 minutes.</li>
           <li>Perform your first batch of stretch and folds (stretch the dough out and fold it over itself 5 times). Let your dough rest for 30 minutes.</li>
           <li>Repeat step 2 two more times.</li>
           <li>Let your dough proof in a warm place until it doubles in size. This usually takes 3-4 hours in my kitchen (74℉).</li>
           <li>Next, shape the dough and create tension in it by pushing it away and then pulling it towards you. Repeat this 5 times.</li>
           <li>Set the bowl of dough aside in a floured banneton with a damp tea towel over it and place it in the fridge for 15 hours.</li>
+          <br></br>
+        </ol>
+        <h4 className="text-l font-semibold mb-2">Day 3</h4>
+        <ol className="list-decimal list-inside space-y-2">
           <li>1 hour before you remove your bread from the fridge preheat your oven (with your dutch oven inside it) to 500℉.</li>
           <li>Carefully transfer your dough to a piece of parchment paper/silicon mat. Feel free to add decorative scores to your sourdough at this point.</li>
-          <li>Then, transfer your dough to your preheated dutch oven, cover with a lid, and place back into the oven for 7 minutes.</li>
+          <li>Then, transfer your dough to your preheated dutch oven, place 2-3 ice cubes around the sides, cover with a lid, and place back into the oven for 7 minutes.</li>
           <li>At the 7 minute mark, remove your dutch oven from the oven and add your expansion score to your loaf. This will allow the loaf to expand predictably.</li>
           <li>Place your dutch oven back into the oven (covered) for an additional 13 minutes.</li>
           <li>After 13 minutes, remove the lid from your dutch oven and bake for an additional 15 minutes.</li>
           <li>Remove from the oven and allow to cool on a wire rack for at least 1 hour but preferably until the loaf is completely cool.</li>
+          <br></br>
         </ol>
       </section>
     </main>

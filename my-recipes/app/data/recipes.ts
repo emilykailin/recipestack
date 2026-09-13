@@ -118,6 +118,39 @@ export const recipes: Recipe[] = [
       'honey',
       'olive oil'
     ]
+  },
+  {
+    id: '7',
+    name: 'Banana Multiseed Cookie',
+    image: '/recipes/banana-multiseed-cookie.jpg',
+    difficulty: 'easy',
+    prepTime: '15 minutes',
+    cookTime: '20 minutes',
+    ingredients: [
+      'bananas',
+      'dates',
+      'oats',
+      'salt',
+      'eggs',
+      'hemp hearts',
+      'pumpkin seeds',
+      'vanilla extract',
+      'cinnamon'
+    ]
+  },
+  {
+    id: '8',
+    name: 'Baguette',
+    image: '/recipes/baguette.jpg',
+    difficulty: 'easy',
+    prepTime: '1 day',
+    cookTime: '30 minutes',
+    ingredients: [
+      'flour',
+      'yeast',
+      'water',
+      'salt'
+    ]
   }
 ];
 
