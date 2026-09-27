@@ -1,13 +1,13 @@
 "use client";
 
-// app/recipes/8/page.tsx
+// app/recipes/10/page.tsx
 
 import Link from 'next/link';
 import Image from 'next/image';
 import '../../../app/globals.css';
 import { useEffect, useState } from 'react';
 
-export default function BaguetteRecipePage() {
+export default function NYBagelRecipePage() {
   const [cookingMode, setCookingMode] = useState(false);
   let wakeLock: WakeLockSentinel | null = null;
 
@@ -61,17 +61,16 @@ export default function BaguetteRecipePage() {
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
         <Image
-          src="/recipes/baguette.jpg"
-          alt="Baguette"
+          src="/recipes/ny_bagels.jpg"
+          alt="New York Bagels"
           width={800}
           height={500}
           className="rounded-xl mb-8 w-full h-auto object-cover"
         />
 
-        <h1 className="text-3xl font-bold mb-4 font-homemade text-center">Baguette Recipe</h1>
+        <h1 className="text-3xl font-bold mb-4 font-homemade text-center">New York Bagel Recipe</h1>
         <p className="italic text-center mb-4">
-          Adapted from Momsdish No Knead Bread-Baguette Recipe<br />
-          Makes 4 loaves
+          Makes 12 bagels
         </p>
 
         <div className="text-center mb-8">
@@ -83,31 +82,42 @@ export default function BaguetteRecipePage() {
           </button>
         </div>
 
+      
         <h2 className="text-xl font-semibold mt-8 mb-2">Ingredients:</h2>
         <ul className="list-disc list-inside mb-6">
-          <li>720g all purpose flour</li>
-          <li>530g water</li>
-	        <li>6g active dry yeast</li>
-	        <li>12g salt</li>
+          <li>940g bread flour (or any high protein flour)</li>
+          <li>12g vital wheat gluten</li>
+	        <li>4g active dry yeast</li>
+	        <li>20g salt</li>
+          <li>25g barley malt syrup</li>
+          <li>562g water (warmed)</li>
         </ul>
 
         <h2 className="text-xl font-semibold mb-2">Steps:</h2>
         <h4 className="text-l font-semibold mb-2">Day 1 Evening</h4>
         <ol className="list-decimal list-inside space-y-2">
-          <li>Mix all ingredients in a mixing bowl.</li>
-          <li>Cover with plastic wrap and leave on the counter overnight (12-15 hours).</li>
+          <li>Add the active dry yeast to the warm water.</li>
+          <li>Mix in the barley malt syrup.</li>
+          <li>Add the bread flour, vital wheat gluten, and salt to the mixture and combine.</li>
+          <li>Cover with plastic wrap and leave on the counter for 30 minutes.</li>
+          <li>After the 30 minutes, pour the dough onto the counter and knead for 10 minutes until the dough is smooth.</li>
+          <li>Cover again with plastic wrap and leave on the counter for one hour.</li>
+          <li>After the hour is up, place the dough onto the counter and divide into 12 equal portions.</li>
+          <li>Shape each portion into a rectangle/square and roll it up into a cylinder.</li>
+          <li>Join the two ends of the cylinder and roll on the counter again to shape your dough into bagels.</li>
+          <li>Repeat for all 12 dough portions and let them proof in the fridge overnight (12 hours).</li>
         </ol>
         <br></br>
         <h4 className="text-l font-semibold mb-2">Day 2 Morning</h4>
         <ol className="list-decimal list-inside space-y-2">
-          <li>Flour your countertop and place dough on the counter.</li>
-          <li>Divide into 4 equal portions, roll the dough out lengthwise and crosswise, and pinch the dough crosswise to shape.</li>
-          <li>Place the shaped dough onto your floured baguette pan, cover, and let proof on the countertop for 1 hour. </li>
+          <li>Take your dough out of the fridge.</li>
           <li>Preheat your oven to 450℉</li>
-	        <li>After an hour, score your loaves. </li>
+          <li>Add 50g barley malt, a pinch of salt, and 2 tbsp of baking soda to your water and bring to a boil.</li>
+          <li>Place your shaped dough into the boiling water (3 at a time as long as your pot permits), boiling each side for 30 seconds. </li>
+	        <li>Place the boiled dough onto your baking sheet and sprinkle with any preferred toppings. </li>
           <li>Place in the oven on the middle rack. Place a pan of hot water on the lower rack to create steam in the oven.</li>
-          <li>Bake for 10min, then remove the pan of hot water and continue to bake for 20min.</li>
-          <li>Once baked, allow your bread to cool on a baking rack for 10min before enjoying.</li>
+          <li>Bake for 6min, then remove the pan of hot water and continue to bake for 14min.</li>
+          <li>Once baked, allow your bagels to cool on a baking rack for 10min before enjoying.</li>
         </ol>
       </section>
     </main>

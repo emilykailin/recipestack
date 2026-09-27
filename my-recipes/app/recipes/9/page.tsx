@@ -1,13 +1,13 @@
 "use client";
 
-// app/recipes/8/page.tsx
+// app/recipes/9/page.tsx
 
 import Link from 'next/link';
 import Image from 'next/image';
 import '../../../app/globals.css';
 import { useEffect, useState } from 'react';
 
-export default function BaguetteRecipePage() {
+export default function PandanChiffonRecipePage() {
   const [cookingMode, setCookingMode] = useState(false);
   let wakeLock: WakeLockSentinel | null = null;
 
@@ -61,17 +61,17 @@ export default function BaguetteRecipePage() {
 
       <section className="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
         <Image
-          src="/recipes/baguette.jpg"
-          alt="Baguette"
+          src="/recipes/pandan_chiffon.jpg"
+          alt="Pandan Chiffon Cake"
           width={800}
           height={500}
           className="rounded-xl mb-8 w-full h-auto object-cover"
         />
 
-        <h1 className="text-3xl font-bold mb-4 font-homemade text-center">Baguette Recipe</h1>
+        <h1 className="text-3xl font-bold mb-4 font-homemade text-center">Pandan Chiffon Cake Recipe</h1>
         <p className="italic text-center mb-4">
-          Adapted from Momsdish No Knead Bread-Baguette Recipe<br />
-          Makes 4 loaves
+          Adapted from fooddelicacy No Fail Pandan Chiffon Cake Recipe<br />
+          Makes 1 chiffon cake
         </p>
 
         <div className="text-center mb-8">
@@ -83,31 +83,43 @@ export default function BaguetteRecipePage() {
           </button>
         </div>
 
-        <h2 className="text-xl font-semibold mt-8 mb-2">Ingredients:</h2>
+      
+        <h2 className="text-xl font-semibold mt-8 mb-2">Batter:</h2>
         <ul className="list-disc list-inside mb-6">
-          <li>720g all purpose flour</li>
-          <li>530g water</li>
-	        <li>6g active dry yeast</li>
-	        <li>12g salt</li>
+          <li>87g all purpose flour</li>
+          <li>13g corn starch</li>
+	        <li>5 egg yolks</li>
+          <li>45g sugar</li>
+          <li>82g coconut milk</li>
+          <li>50g oil</li>
+          <li>2 pandan leaves</li>
+          <li>1 tsp pandan extract</li>
+          <li>1 tsp baking powder</li>
+          <li>A pinch of salt</li>
+        </ul>
+
+        <h2 className="text-xl font-semibold mt-8 mb-2">Meringue:</h2>
+        <ul className="list-disc list-inside mb-6">
+          <li>5 egg whites</li>
+          <li>55g sugar</li>
+	        <li>½ tsp cream of tartar</li>
         </ul>
 
         <h2 className="text-xl font-semibold mb-2">Steps:</h2>
-        <h4 className="text-l font-semibold mb-2">Day 1 Evening</h4>
         <ol className="list-decimal list-inside space-y-2">
-          <li>Mix all ingredients in a mixing bowl.</li>
-          <li>Cover with plastic wrap and leave on the counter overnight (12-15 hours).</li>
-        </ol>
-        <br></br>
-        <h4 className="text-l font-semibold mb-2">Day 2 Morning</h4>
-        <ol className="list-decimal list-inside space-y-2">
-          <li>Flour your countertop and place dough on the counter.</li>
-          <li>Divide into 4 equal portions, roll the dough out lengthwise and crosswise, and pinch the dough crosswise to shape.</li>
-          <li>Place the shaped dough onto your floured baguette pan, cover, and let proof on the countertop for 1 hour. </li>
-          <li>Preheat your oven to 450℉</li>
-	        <li>After an hour, score your loaves. </li>
-          <li>Place in the oven on the middle rack. Place a pan of hot water on the lower rack to create steam in the oven.</li>
-          <li>Bake for 10min, then remove the pan of hot water and continue to bake for 20min.</li>
-          <li>Once baked, allow your bread to cool on a baking rack for 10min before enjoying.</li>
+          <li>Preheat your oven to 340℉</li>
+          <li>Blend your pandan leaves with 2 tbsp of water. Strain the mixture and keep the liquid (pandan juice).</li>
+          <li>Sift your flour, corn starch, baking powder, and salt in a bowl.</li>
+          <li>In a different bowl, mix your egg yolks and sugar until thick and slightly foamy.</li>
+          <li>Add in 1 tsp of the pandan juice, the pandan extract, coconut milk, oil. Mix until well combined.</li>
+          <li>Add the dry ingredients mixture to this bowl of wet ingredients in 2 parts.</li>
+	        <li>Combine the egg whites and cream of tartar to a bowl and mix with an electric mixer.</li>
+          <li>Once the micture is frothy, add the sugar in little by little.</li>
+          <li>Whisk until stiff peaks form.</li>
+          <li>Add the meringue to the batter in three parts, mixing gently.</li>
+          <li>Pour the batter into a chiffon tube pan and bake for 45min. Do not grease the pan.</li>
+          <li>Once baked, allow your chiffon cake to cool upside down in the pan.</li>
+          <li>Once fully cooled, remove the chiffon cake from the pan and enjoy!</li>
         </ol>
       </section>
     </main>

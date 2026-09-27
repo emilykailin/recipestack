@@ -151,6 +151,44 @@ export const recipes: Recipe[] = [
       'water',
       'salt'
     ]
+  },
+  {
+    id: '9',
+    name: 'Pandan Chiffon Cake',
+    image: '/recipes/pandan_chiffon.jpg',
+    difficulty: 'easy',
+    prepTime: '30 minutes',
+    cookTime: '45 minutes',
+    ingredients: [
+      'flour',
+      'eggs',
+      'oil',
+      'pandan leaves',
+      'pandan extract',
+      'sugar',
+      'baking powder',
+      'corn starch',
+      'cream of tartar',
+      'coconut milk',
+      'salt'
+    ]
+  },
+  {
+    id: '10',
+    name: 'New York Bagels',
+    image: '/recipes/ny_bagels.jpg',
+    difficulty: 'medium',
+    prepTime: '1 day',
+    cookTime: '30 minutes',
+    ingredients: [
+      'flour',
+      'yeast',
+      'salt',
+      'barley malt syrup',
+      'vital wheat gluten',
+      'water',
+      'everything but the bagel seasoning'
+    ]
   }
 ];
 
